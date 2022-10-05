@@ -1,5 +1,5 @@
 /*
-Question Link : 
+Question Link : https://codeforces.com/problemset/problem/1738/B
 */
 
 #include <bits/stdc++.h>
@@ -31,6 +31,42 @@ using namespace std;
 
 void solve()
 {
+    ll n, k;
+    cin >> n >> k;
+    vector<ll> s(k);
+    for (int i = 0; i < k; i++)
+    {
+        cin >> s[i];
+    }
+    if (k == 1)
+    {
+        YES;
+    }
+    else
+    {
+        vector<ll> v(n);
+        ll j = n - 1;
+        for (int i = k - 1; i >= 1; i--)
+        {
+            v[j] = s[i] - s[i - 1];
+            j--;
+        }
+        while (j >= 0)
+        {
+            v[j] = v[j + 1];
+            s[0] -= v[j];
+            j--;
+        }
+        v[0] += s[0];
+        if (is_sorted(all(v)))
+        {
+            YES;
+        }
+        else
+        {
+            NO;
+        }
+    }
 }
 
 int main()
