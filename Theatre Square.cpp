@@ -1,5 +1,5 @@
 /*
-Question Link : 
+Question Link :
 */
 
 #include <bits/stdc++.h>
@@ -29,8 +29,28 @@ using namespace std;
 #define p(x) cout << x << endl
 #define all(v) v.begin(), v.end()
 
+long long binpow(long long a, long long b, long long m) {
+    a %= m;
+    long long res = 1;
+    while (b > 0) {
+        if (b & 1)
+            res = res * a % m;
+        a = a * a % m;
+        b >>= 1;
+    }
+    return res;
+}
+
+
 void solve()
 {
+    ll n,m,a;
+    cin >> n >> m >> a;
+    ll x = n/a;
+    ll y = m/a;
+    if(n%a!=0) x++;
+    if(m%a!=0) y++;
+    cout << x*y;
 }
 
 int main()
@@ -39,7 +59,7 @@ int main()
     // freopen("input.txt", "r", stdin);
     // freopen("output.txt", "w", stdout);
     ll tomato = 1;
-    cin >> tomato;
+    // cin >> tomato;
     while (tomato--)
     {
         solve();
